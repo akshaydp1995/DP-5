@@ -1,0 +1,14 @@
+# Time - O(exponential)
+# Space - O(max(m, n)) due to recursive stack
+# Ran on LC - Yes, with TLE
+
+# For every entry, the number of paths are the number of paths of above + number of paths from the left
+
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        return self.helper(m-1, n-1)
+
+    def helper(self, m, n):
+        if m == 0 or n == 0:
+            return 1
+        return self.helper(m-1, n) + self.helper(m, n-1)
